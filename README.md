@@ -1,4 +1,4 @@
-# KinaseNet: 
+# KinaseNet
 
 ![label1](https://img.shields.io/badge/version-v1.0.0-yellow)	![label2](https://img.shields.io/badge/license-MIT-green)
 
