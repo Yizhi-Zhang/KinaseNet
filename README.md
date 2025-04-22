@@ -7,6 +7,7 @@
 <!---**![Figure1]()** --->
 
 ## Overview
+KinaseNet is a context-aware, multi-layer perceptron (MLP)-based model developed to infer kinase–substrate relationships (KSRs) within specific biological conditions or tissue types.
 
 ## Installation
 We recommend using a dedicated conda environment.
