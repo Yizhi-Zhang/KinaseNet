@@ -34,7 +34,7 @@ import kinasenet
 If no error is raised, the installation was successful ✅
 
 ## Usage
-We provide a usage example in the Jupyter notebook [tutorial.ipynb](./tutorial.ipynb), which demonstrates how to:
+We provide a usage example in the Jupyter notebook [`tutorial.ipynb`](./tutorial.ipynb), which demonstrates how to:
 
 - Load preprocessed phosphoproteomic data
 
@@ -60,7 +60,7 @@ Two files are essential for running KinaseNet:
 
 - `example.feather`  
   A phosphoproteomic expression matrix (e.g., log<sub>2</sub> intensity values from [CPTAC](https://pdc.cancer.gov/pdc/browse/filters/program_name:Clinical%20Proteomic%20Tumor%20Analysis%20Consortium)), where each **row represents a phosphosite** and each **column represents a sample**.  
-  This matrix has been preprocessed by:
+  This matrix has been preprocessed by the script [`data_merge.R`](./data_merge.R), which you can refer to for implementation details. The preprocessing steps include:
     - Filtering: Only retaining phosphosites expressed in ≥30% of samples
     - Missing value imputation: Performed using K-nearest neighbors (KNN)
 
