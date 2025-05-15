@@ -5,9 +5,9 @@
 **| [Overview](#overview) | [Installation](#installation) | [Usage](#usage) | [Data](#data) | [Output](#output) | [Citation](#citation) |**
 
 ## Overview
-KinaseNet is a context-aware, multi-layer perceptron (MLP)-based model developed to infer kinase–substrate relationships (KSRs) within specific biological conditions or tissue types.
+KinaseNet is a biologically informed deep learning framework that integrates prior kinase-substrate regulatory knowledge with large-scale phosphoproteomic data to infer cancer-type-specific kinase-substrate relationships (KSRs) and sample-specific kinase activities. Unlike previous approaches that rely on static sequence motifs or shallow enrichment strategies, KinaseNet introduces a novel architectural design in which the kinase layer encodes mechanistically interpretable latent variables, enabling both robust inference of context-specific KSRs and direct interpretability of kinase activity.
 
-<!---**![Figure 1](https://raw.githubusercontent.com/Yizhi-Zhang/MarkdownPicture/master/KinaseNet/Figure1A.png)**--->
+![Figure 1](https://raw.githubusercontent.com/Yizhi-Zhang/MarkdownPicture/master/KinaseNet/Figure1A.png)
 
 ## Installation
 We recommend using a dedicated conda environment.
@@ -21,7 +21,7 @@ Install PyTorch according to your system and CUDA version from the [official web
 
 ### Install KinaseNet
 ```bash
-git clone https://github.com/Yizhi-Zhang/KinaseNet.git
+git clone https://github.com/TongjiZhanglab/KinaseNet.git
 cd KinaseNet
 pip install .
 ```
@@ -40,7 +40,7 @@ We provide a usage example in the Jupyter notebook [tutorial.ipynb](./tutorial.i
 
 - Run KinaseNet for inference
 
-- Extract kinase-substrate relationships
+- Extract cancer-type-specific KSRs
 
 - Estimate sample-specific kinase activity
 
@@ -49,23 +49,23 @@ The [`example_data/`](./example_data/) directory contains input files used to de
 ```text
 example_data/
 ├── example.feather              # Input phosphoproteomic data
-├── prior_example.tsv            # Input prior kinase-substrate relationships
+├── prior_example.tsv            # Input prior KSRs
 ├── preprocessed_data/
 │   ├── data.parquet             # Preprocessed phosphoproteomic data
-│   └── prior.parquet            # Preprocessed prior kinase-substrate relationships
+│   └── prior.parquet            # Preprocessed prior KSRs
 ```
 
 ### 📌 Input Files
 Two files are essential for running KinaseNet:
 
 - `example.feather`  
-  A phosphoproteomic expression matrix (e.g., log2 intensity values from [CPTAC](https://pdc.cancer.gov/pdc/browse/filters/program_name:Clinical%20Proteomic%20Tumor%20Analysis%20Consortium)), where each **row represents a phosphosite** and each **column represents a sample**.  
+  A phosphoproteomic expression matrix (e.g., log<sub>2</sub> intensity values from [CPTAC](https://pdc.cancer.gov/pdc/browse/filters/program_name:Clinical%20Proteomic%20Tumor%20Analysis%20Consortium)), where each **row represents a phosphosite** and each **column represents a sample**.  
   This matrix has been preprocessed by:
     - Filtering: Only retaining phosphosites expressed in ≥30% of samples
     - Missing value imputation: Performed using K-nearest neighbors (KNN)
 
 - `prior_example.tsv`  
-  A prior knowledge matrix of kinase-substrate relationships (e.g., from [PhosphoSitePlus](https://www.phosphosite.org/homeAction) or computational predictions), where each **row represents a phosphosite** and each **column represents a kinase**.  
+  A prior knowledge matrix of KSRs (e.g., from [PhosphoSitePlus](https://www.phosphosite.org/homeAction) or computational predictions), where each **row represents a phosphosite** and each **column represents a kinase**.  
   A value >0 indicates that the kinase is known or predicted to regulate the phosphosite.
 
 ### 🧪 Preprocessed Files
@@ -102,4 +102,6 @@ example_results/
   Training logs and loss curves for reproducibility and diagnostic purposes.
 
 ## Citation
+<!--
 If you use KinaseNet in your research, please cite:
+-->
