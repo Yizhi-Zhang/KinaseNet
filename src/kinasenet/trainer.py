@@ -3,8 +3,6 @@ import os
 import torch
 import torch.nn as nn
 from torch.utils.tensorboard import SummaryWriter
-# from cal_loss import cal_loss
-# from .shrinkage_loss import shrinkage_loss
 
 
 class Trainer(object):
@@ -16,11 +14,8 @@ class Trainer(object):
         self.output_path = output_path
         self.scheduler_class = scheduler_class
         self.scheduler_kwargs = scheduler_kwargs
-        #################################### mseLoss
         self.mse = nn.MSELoss()
         self.criterion = nn.MSELoss()
-        # self.criterion = cal_loss()
-        # self.criterion = shrinkage_loss()
         self.device = device
         self.alpha = alpha
         self.threshold_right = threshold_right
@@ -91,7 +86,6 @@ class Trainer(object):
             optimizer.zero_grad()
             output = model(inputs)
             
-            # loss = self.criterion(output, targets, self.alpha, self.threshold_right, self.threshold_left)
             loss = self.criterion(output, targets)
             loss.backward()
             optimizer.step()
@@ -111,7 +105,6 @@ class Trainer(object):
             with torch.no_grad():
                 output = model(inputs)
             
-            # loss = self.criterion(output, targets, self.alpha, self.threshold_right, self.threshold_left)
             loss_mse = self.mse(output, targets)
             loss = self.criterion(output, targets)
 
